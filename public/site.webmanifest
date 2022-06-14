@@ -1,0 +1,14 @@
+{
+  "short_name": "Aryan Mann",
+  "name": "Aryan Mann",
+  "icons": [
+    {
+      "src": "icon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/?utm_source=homescreen",
+  "background_color": "#2F611A",
+  "theme_color": "#fefefe"
+}

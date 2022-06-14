@@ -1,0 +1,20 @@
+{
+  "base_url": "https://aryanmann.com",
+  "site_title": "A Website by Aryan",
+  "site_description": "A blog containing posts about things like tech, philosophy, tech, and philosophy. Maybe some book stuff too.",
+  "site_keywords": [
+    {
+      "keyword": "Next.js"
+    },
+    {
+      "keyword": "Netlify"
+    },
+    {
+      "keyword": "React"
+    }
+  ],
+  "posts_per_page": 5,
+  "github_account": "aryan-mann",
+  "spotify_account": "aryan-mann",
+  "email_account": "aryan.21.mann@gmail.com"
+}
