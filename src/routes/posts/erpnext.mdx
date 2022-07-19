@@ -1,0 +1,150 @@
+---
+title: Managing a Containerized ERPNext Instance
+date: 2022-07-11
+tags:
+  - erpnext
+  - ERP
+  - docker
+  - cloud
+---
+
+## Some History
+A few weeks ago, I worked on installing and setting up an enterprise resource planning system ([ERPNext](https://github.com/frappe/erpnext)) for a company. I had worked on this a few times previously so I had a couple of pain points that I wanted to resolve this time around. The primary one was to ease the installation, backup, and restoration process. The usual way of installing ERPNext previously involved booting up a linux server, downloading and running a bunch of scripts until finally I could use their `bench` cli to create a new site. It was a lengthy and error prone process that often required some debugging due to machine differences and odd unautomated things like LetsEncrypt SSL certificates. However, during the latest installation cycle, I was pleased to see that they had upgraded their installation instructions to now use docker containers which would solve the **not on my machine** problem that previously was painful. Additionally, since their setup utilized *docker compose* along with a bunch of additional compose files you could tack on, configuration and reproduction was simple (..as long as you understood the docker ecosystem). I had used docker before for a couple of things, but this seemed like the perfect opportunity to learn and make notes while at it so I could share it here. I'm going to write a more abstract blog on docker compose to go with this (and put the link somewhere here when its done) but for the moment heres a short guide to a containerized installation of ERP Next along with brief explanations on how things are working. 
+
+## Summary
+
+### Step 1: Get the Repo
+Clone or fork the [Frappe Docker](https://github.com/frappe/frappe_docker) and rename it to something recognizable. We are going to start our ERP Next application from within the repo. There's a lot of unneeded fluff for our purposes so we'll delete like 80% of the files later on.
+
+### Step 2: Understand the Structure
+
+#### compose.yaml
+
+The `compose.yaml` file at the root is the main compose file which we are going to be using to start all our smaller containers. I've added helpful comments to it below, let's go through it.
+
+```yaml
+# Defining a reusable chunk of data
+#   - Definition: &name_of_data
+#   - Usage: *name_of_data 
+
+# Any service can adds this reusable default option
+x-depends-on-configurator: &depends_on_configurator
+  # Only run when the configurator exits with "service_completed_successfully" 
+  depends_on:
+    configurator:
+      condition: service_completed_successfully
+
+# Another reusable default
+x-backend-defaults: &backend_defaults
+  # Use defaults from "depends_on_configurator" i.e. run after "configurator" service exits successfully  
+  <<: *depends_on_configurator
+  # Use the specified image
+  image: frappe/frappe-worker:${FRAPPE_VERSION:?No Frappe version set}
+  # Mount the "sites" volume to the "/home/frappe/frappe-bench/sites" directory in the container
+  volumes:
+    - sites:/home/frappe/frappe-bench/sites
+
+# Now we define all the services for this docker compose
+# When we use "docker compose ... up", it will start all the services below
+services:
+  # The configurator service does some environment setup for all other services below
+  configurator:
+    <<: *backend_defaults
+    # Script definition: https://github.com/frappe/frappe_docker/blob/4e63052a5448eda90c0be3ccf9efc39a83f0027c/images/worker/configure.py
+    # This script just sets up some files for frappe to work correctly
+    command: configure.py
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      REDIS_CACHE: ${REDIS_CACHE}
+      REDIS_QUEUE: ${REDIS_QUEUE}
+      REDIS_SOCKETIO: ${REDIS_SOCKETIO}
+      SOCKETIO_PORT: 9000
+    # Override depends_on so it doesn't use the default behavior of depending on configurator exiting successfully
+    # (we are the configurator service!)
+    depends_on: {}
+
+  # The backend server which you can bash into to run commands such as "bench"
+  backend:
+    <<: *backend_defaults
+    volumes:
+      - sites:/home/frappe/frappe-bench/sites
+      - assets:/home/frappe/frappe-bench/sites/assets:ro
+
+  # Serves the website publicly
+  frontend:
+    image: frappe/frappe-nginx:${FRAPPE_VERSION}
+    environment:
+      BACKEND: backend:8000
+      SOCKETIO: websocket:9000
+      FRAPPE_SITE_NAME_HEADER: ${FRAPPE_SITE_NAME_HEADER:-$$host}
+      UPSTREAM_REAL_IP_ADDRESS: ${UPSTREAM_REAL_IP_ADDRESS:-127.0.0.1}
+      UPSTREAM_REAL_IP_HEADER: ${UPSTREAM_REAL_IP_HEADER:-X-Forwarded-For}
+      UPSTREAM_REAL_IP_RECURSIVE: ${UPSTREAM_REAL_IP_RECURSIVE:-off}
+    volumes:
+      - sites:/usr/share/nginx/html/sites
+      - assets:/usr/share/nginx/html/assets
+    depends_on:
+      - backend
+      - websocket
+
+  # Enables a two-way session between client and server to send and receive data
+  # without the traditional handshake method that occurs for each HTTP request
+  websocket:
+    <<: *depends_on_configurator
+    image: frappe/frappe-socketio:${FRAPPE_VERSION}
+    volumes:
+      - sites:/home/frappe/frappe-bench/sites
+
+  # Bench has three queues where background jobs can be added
+  # Service workers will pickup jobs from these queues one by one
+
+  # Short queue for quick jobs
+  queue-short:
+    <<: *backend_defaults
+    command: bench worker --queue short
+
+  # Default queue
+  queue-default:
+    <<: *backend_defaults
+    command: bench worker --queue default
+
+  # And long queue for long running/lengthy jobs
+  queue-long:
+    <<: *backend_defaults
+    command: bench worker --queue long
+
+  # Scheduler enqueues different jobs which are then placed into the queues
+  # above to be executed by the service workers
+  scheduler:
+    <<: *backend_defaults
+    command: bench schedule
+
+# Volumes are docker-controlled persistent storage that can be mounted and shared by many different services.
+# We specify two volumes, one which contains all ours bench sites (in our case, only one site)
+# and one which contains the assets for our sites.  
+volumes:
+  sites:
+  # The assets volume in particular is used by our nginx frontend to serve assets
+  assets:
+```
+
+
+# To Write
+
+
+1. Docker compose setup. Multiple overrides which are essentially sort of "plugins." Use erpnext, mariadb, redis, and https.
+2. This setups frappe site in a container although without any "sites"
+3. `bench new-site amc-erp --mariadb-root-password 123 --admin-password ViewSonicsteelseriesDELL!`
+    - get the mariadb-root-password from your .env file and admin-password is upto you. it'll be used for the Adminstrator user of erpnext
+4. we then install the erpnext app onto our site using `bench --site amc-erp install-app erpnext` 
+5. installation command doesn't take any time because it just copies the files. to actually install, we need to also migrate the site using `bench --site amc-erp migrate`
+
+## Deploying Online 
+
+1. Go to GCS and create any sized VM
+2. In boot disk, select operating system to container optimized OS
+3. 20 gigs of space should be enough
+4. allow https traffic
+
+## SSL

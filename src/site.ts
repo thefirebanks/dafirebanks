@@ -1,0 +1,19 @@
+export const SiteData = {
+  base_url: "https://aryanmann.com",
+  site_title: "aryan's website",
+  author: "Aryan Mann",
+  title_functor: (title) => `${title} | Aryan Mann`,
+  site_description: "a blog containing posts about things like tech, philosophy, tech, and philosophy. maybe some book stuff too.",
+  site_keywords: [ "Next.js", "Netlify", "React" ],
+  posts_per_page: 5,
+  socials: [
+    { title: "Github", url: "https://github.com/aryan-mann" },
+    { title: "Spotify", url: "https://open.spotify.com/user/aryan-mann" },
+    { title: "Email", url: "mailto:aryan.21.mann@gmail.com" },
+  ],
+  menuLinks: [
+    { label: "home", url: "/" },
+    { label: "résumé", url: "/resume.pdf" },
+    { label: "blog", url: "/posts" },
+  ]
+}

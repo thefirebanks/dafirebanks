@@ -1,12 +1,38 @@
-<p align="center">
-  <img width="672" src="https://img.shields.io/badge/Tech%20Stack-React%20%7C%20Next.JS%20%7C%20Tailwind%20%7C%20Twin.Macro-0e0e0e?style=for-the-badge" alt="Tech Stack" />
-</p>
-<p align="center">
-  <img src="./public/images/am_logo_black.png" width="300" alt="Aryan Mann Logo" />
-</p>
-<p align="center">
-  <img src="https://img.shields.io/github/checks-status/aryan-mann/aryanmann.com/main?style=for-the-badge" alt="Github Checks Badge" />
-  <img src="https://img.shields.io/github/repo-size/aryan-mann/aryanmann.com?style=for-the-badge" alt="Repo Size" />
-  <img src="https://img.shields.io/github/license/aryan-mann/aryanmann.com?style=for-the-badge" alt="License" />
-  <img src="https://img.shields.io/uptimerobot/ratio/m785382382-80b8b3117937a2dc5e66badb?style=for-the-badge" alt="Uptime" />
-</p>
+# create-svelte
+
+Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+
+## Creating a project
+
+If you're seeing this, you've probably already done this step. Congrats!
+
+```bash
+# create a new project in the current directory
+npm init svelte
+
+# create a new project in my-app
+npm init svelte my-app
+```
+
+## Developing
+
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+
+```bash
+npm run dev
+
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
+
+## Building
+
+To create a production version of your app:
+
+```bash
+npm run build
+```
+
+You can preview the production build with `npm run preview`.
+
+> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
