@@ -12,7 +12,7 @@ export const SiteData = {
   posts_per_page: 5,
   socials: [
     { title: "Github", url: "https://github.com/aryan-mann", icon: FaGithub },
-    { title: "Spotify", url: "https://open.spotify.com/user/aryan-mann", icon: FaSpotify },
+    { title: "Spotify", url: "https://open.spotify.com/user/aryan_mann", icon: FaSpotify },
     { title: "Email", url: "mailto:aryan.21.mann@gmail.com", icon: FaMailBulk },
   ],
   menuLinks: [
