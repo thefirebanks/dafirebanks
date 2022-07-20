@@ -7,7 +7,7 @@ export async function GET({ params }) {
   const tag = params.tag;
 
   for (let moduleKey in mdxModules) {
-    const urlPath = `/posts/${moduleKey.substring(2, moduleKey.length-4)}`
+    const urlPath = `${moduleKey.substring(2, moduleKey.length-4)}`
     const modulePromise = mdxModules[moduleKey];
     const resolvedModule: any = await modulePromise();
     const mt = resolvedModule.metadata;

@@ -21,7 +21,7 @@
     @apply pb-4 mt-8 mb-1 text-3xl;
   }
   .typo h3 {
-    @apply pb-2 mt-2 mb-4 text-2xl font-light border-b-2;
+    @apply pb-2 mt-6 mb-4 text-2xl font-light border-b-2;
   }
   .typo h4 {
     @apply py-1 text-xl font-bold;
@@ -42,10 +42,14 @@
     margin-left: 2em;
   }
   a {
-    @apply hover:decoration-primary-500 hover:italic underline duration-200;
+    @apply hover:decoration-primary-500 underline duration-200;
   }
   a.thick-link {
     @apply hover:not-italic bg-primary-200 hover:bg-primary-400 px-3 py-2 no-underline rounded shadow;
+  }
+
+  .typo h2 + h3 {
+    margin-top: 0;
   }
 }
 

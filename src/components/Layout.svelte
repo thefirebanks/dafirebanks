@@ -14,7 +14,7 @@
 <div class="w-screen h-screen">
 	<main class="md:py-16 xl:py-24 flex flex-col items-center justify-center px-8 pt-24 pb-6">
 		<Navigation />
-		<MobileNavigation />
+		<!-- <MobileNavigation /> -->
     <div class="w-full max-w-screen-sm">
       <slot />
     </div>

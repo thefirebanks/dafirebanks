@@ -1,3 +1,7 @@
+import FaGithub from 'svelte-icons/fa/FaGithub.svelte'
+import FaSpotify from 'svelte-icons/fa/FaSpotify.svelte'
+import FaMailBulk from 'svelte-icons/fa/FaMailBulk.svelte'
+
 export const SiteData = {
   base_url: "https://aryanmann.com",
   site_title: "aryan's website",
@@ -7,9 +11,9 @@ export const SiteData = {
   site_keywords: [ "Next.js", "Netlify", "React" ],
   posts_per_page: 5,
   socials: [
-    { title: "Github", url: "https://github.com/aryan-mann" },
-    { title: "Spotify", url: "https://open.spotify.com/user/aryan-mann" },
-    { title: "Email", url: "mailto:aryan.21.mann@gmail.com" },
+    { title: "Github", url: "https://github.com/aryan-mann", icon: FaGithub },
+    { title: "Spotify", url: "https://open.spotify.com/user/aryan-mann", icon: FaSpotify },
+    { title: "Email", url: "mailto:aryan.21.mann@gmail.com", icon: FaMailBulk },
   ],
   menuLinks: [
     { label: "home", url: "/" },
