@@ -12,9 +12,6 @@ export async function GET({ params }) {
     const resolvedModule: any = await modulePromise();
     const mt = resolvedModule.metadata;
 
-    console.log(tag)
-    console.log(mt.tags)
-
     if (mt.tags.includes(tag)){
       postList.push({
         url: urlPath,

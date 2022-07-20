@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-auto';
+import vercel from '@sveltejs/adapter-vercel';
 import preprocess from 'svelte-preprocess';
 import { mdsvex } from "mdsvex";
 
@@ -15,7 +15,11 @@ const config = {
     preprocess({ postcss: true }),
   ],
 	kit: {
-		adapter: adapter()
+		adapter: vercel({
+      edge: false,
+      external: [],
+      split: false
+    })
 	},
   extensions: [".svelte", ".mdx"]
 };
