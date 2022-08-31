@@ -41,8 +41,7 @@
     <a href="https://github.com/Unity-Technologies/com.unity.perception">
       perception package
     </a>
-  </b>
-  . bounding boxes, instance segmentation, occlusion percentages, and
+  </b>. bounding boxes, instance segmentation, occlusion percentages, and
   that kind of stuff. find me pushing bug fixes, feature improvements,
   and more! but mostly that.
 </div>
