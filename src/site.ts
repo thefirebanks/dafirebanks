@@ -17,8 +17,8 @@ export const SiteData = {
   ],
   menuLinks: [
     { label: "home", url: "/" },
+    { label: "blog", url: "/posts" },
     { label: "résumé (pdf)", url: "/AryanMann_Resume_Engineer.pdf" },
     { label: "résumé (docx)", url: "/AryanMann_Resume_Engineer.docx" },
-    { label: "blog", url: "/posts" },
   ]
 }

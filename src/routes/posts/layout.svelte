@@ -9,8 +9,8 @@
 <Meta title={title} date={date} />
 
 <div class="flex flex-col mb-8">
-  <div class="flex items-center justify-between mt-8 mb-8">
-    <h1 class="text-4xl">{title}</h1>
+  <div class="flex flex-col md:flex-row md:items-center justify-between mt-8 mb-8">
+    <h1 class="text-3xl md:text-4xl">{title}</h1>
     <p class="whitespace-nowrap px-2 text-right">{convertToDate(date)}</p>
   </div>
   {#if tags}

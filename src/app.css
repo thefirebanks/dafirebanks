@@ -41,6 +41,9 @@
     list-style-type: disc;
     margin-left: 2em;
   }
+  .typo code {
+    @apply text-sm bg-primary-200 px-1 mx-1 py-[0.2em] rounded;
+  }
   a {
     @apply hover:decoration-primary-500 underline duration-200;
   }
