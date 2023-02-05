@@ -46,6 +46,12 @@ export const SiteData = {
 			image: '/images/sc_ari.jpg',
 			description:
 				'My own personal website with a tiny blog. Powered by Svelte under the hood with all custom components made using Tailwind. The blog uses MDX for the posts which allows embedding of Svelte code.'
+		},
+		{
+			website: 'popos.aryanmann.com',
+			image: '/images/sc_pop.jpg',
+			description:
+				'A tiny side project to find, rate, and showcase POPOS (Privately Owned Public Open Spaces) in San Francisco. Also uses Svelte and some geolocation to find you the best POPO near you.'
 		}
 	]
 };

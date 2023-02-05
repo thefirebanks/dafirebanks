@@ -40,7 +40,7 @@
 		<div class="flex flex-col">
 			<a
 				class="text-xl no-underline font-bold hover:text-primary-700 text-center w-full"
-				href={portfolioItem.website}>{portfolioItem.website}</a
+				href={`https://${portfolioItem.website}`}>{portfolioItem.website}</a
 			>
 			<img class="shadow" alt="" src={portfolioItem.image} />
 			{#if portfolioItem.description}
