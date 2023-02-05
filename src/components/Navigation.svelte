@@ -9,7 +9,7 @@
     width={170}
     height={72}
   />
-  <div class="grid grid-cols-2 md:grid-cols-4 pt-12 gap-4">
+  <div class="flex flex-wrap pt-12 gap-4 items-start">
     {#each SiteData.menuLinks as menuLink}
       <a class="thick-link" href={menuLink.url}>{menuLink.label}</a>
     {/each}

@@ -7,6 +7,9 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    font-size: 17px;
+  }
   html {
     font-family: 'Ibarra Real Nova', system-ui, sans-serif;
   }

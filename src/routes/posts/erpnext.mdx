@@ -1,5 +1,5 @@
 ---
-title: Managing a Containerized ERPNext Instance (Part I)
+title: Managing a Containerized ERPNext Instance
 date: 2022-07-11
 tags:
   - erpnext
@@ -9,15 +9,18 @@ tags:
 ---
 
 ## Some History
-A few weeks ago, I worked on installing and setting up an enterprise resource planning system ([ERPNext](https://github.com/frappe/erpnext)) for a company. I had worked on this a few times previously so I had a couple of pain points that I wanted to resolve this time around. The primary one was to ease the installation, backup, and restoration process. The usual way of installing ERPNext previously involved booting up a linux server, downloading and running a bunch of scripts until finally I could use their `bench` cli to create a new site. It was a lengthy and error prone process that often required some debugging due to machine differences and odd unautomated things like LetsEncrypt SSL certificates. However, during the latest installation cycle, I was pleased to see that they had upgraded their installation instructions to now use docker containers which would solve the **not on my machine** problem that previously was painful. Additionally, since their setup utilized *docker compose* along with a bunch of additional compose files you could tack on, configuration and reproduction was simple (..as long as you understood the docker ecosystem). I had used docker before for a couple of things, but this seemed like the perfect opportunity to learn and make notes while at it so I could share it here. I'm going to write a more abstract blog on docker compose to go with this (and put the link somewhere here when its done) but for the moment heres a short guide to a containerized installation of ERP Next along with brief explanations on how things are working. 
+
+A few weeks ago, I worked on installing and setting up an enterprise resource planning system ([ERPNext](https://github.com/frappe/erpnext)) for a company. I had worked on this a few times previously so I had a couple of pain points that I wanted to resolve this time around. The primary one was to ease the installation, backup, and restoration process. The usual way of installing ERPNext previously involved booting up a linux server, downloading and running a bunch of scripts until finally I could use their `bench` cli to create a new site. It was a lengthy and error prone process that often required some debugging due to machine differences and odd unautomated things like LetsEncrypt SSL certificates. However, during the latest installation cycle, I was pleased to see that they had upgraded their installation instructions to now use docker containers which would solve the **not on my machine** problem that previously was painful. Additionally, since their setup utilized _docker compose_ along with a bunch of additional compose files you could tack on, configuration and reproduction was simple (..as long as you understood the docker ecosystem). I had used docker before for a couple of things, but this seemed like the perfect opportunity to learn and make notes while at it so I could share it here. I'm going to write a more abstract blog on docker compose to go with this (and put the link somewhere here when its done) but for the moment heres a short guide to a containerized installation of ERP Next along with brief explanations on how things are working.
 
 ## Summary
 
 ### Step 1: Get the Repo
+
 Clone or fork the [Frappe Docker](https://github.com/frappe/frappe_docker) and rename it to something recognizable. We are going to start our ERP Next application from within the repo. There's a lot of unneeded fluff for our purposes so we'll delete like 80% of the files later on.
 
 ### Step 2: Understand the Structure
-This section will contain some explanation which isn't necessary to actually install ERP Next so we can hold off on writing or running code and commands till Step 3. 
+
+This section will contain some explanation which isn't necessary to actually install ERP Next so we can hold off on writing or running code and commands till Step 3.
 
 #### compose.yaml
 
@@ -26,18 +29,18 @@ The `compose.yaml` file at the root is the main compose file which we are going 
 ```yaml
 # Defining a reusable chunk of data
 #   - Definition: &name_of_data
-#   - Usage: *name_of_data 
+#   - Usage: *name_of_data
 
 # Any service can adds this reusable default option
-x-depends-on-configurator: &depends_on_configurator
-  # Only run when the configurator exits with "service_completed_successfully" 
+x-depends-on-configurator:
+  &depends_on_configurator # Only run when the configurator exits with "service_completed_successfully"
   depends_on:
     configurator:
       condition: service_completed_successfully
 
 # Another reusable default
-x-backend-defaults: &backend_defaults
-  # Use defaults from "depends_on_configurator" i.e. run after "configurator" service exits successfully  
+x-backend-defaults:
+  &backend_defaults # Use defaults from "depends_on_configurator" i.e. run after "configurator" service exits successfully
   <<: *depends_on_configurator
   # Use the specified image
   image: frappe/frappe-worker:${FRAPPE_VERSION:?No Frappe version set}
@@ -123,7 +126,7 @@ services:
 
 # Volumes are docker-controlled persistent storage that can be mounted and shared by many different services.
 # We specify two volumes, one which contains all ours bench sites (in our case, only one site)
-# and one which contains the assets for our sites.  
+# and one which contains the assets for our sites.
 volumes:
   sites:
   # The assets volume in particular is used by our nginx frontend to serve assets
@@ -134,11 +137,11 @@ volumes:
 
 In the overrides sub-directory, you will find a couple more YAML files such as `compose.erpnext.yaml`, `compose.mariadb.yaml`, etc. You can essentially think of these files as "plugins" with the caveat that not everything is compatible with each other out of the box.
 
-- `compose.erpnext.yaml` – Replaces the `frappe/worker` docker images with `erpnext/worker`. 
-- `compose.https.yaml` – Adds support for HTTPS via auto-renewed LetsEncrypt SSL certificates and re-routes HTTP traffic to HTTPS.  
+- `compose.erpnext.yaml` – Replaces the `frappe/worker` docker images with `erpnext/worker`.
+- `compose.https.yaml` – Adds support for HTTPS via auto-renewed LetsEncrypt SSL certificates and re-routes HTTP traffic to HTTPS.
 - `compose.mariadb.yaml` – Sets up MariaDB as the SQL database.
 - `compose.noproxy.yaml` – Makes the front-end directly available without the Traefik proxy middleware.
-- `compose.postgres.yaml` – Sets up PostgreSQL as the SQL database. 
+- `compose.postgres.yaml` – Sets up PostgreSQL as the SQL database.
 - `compose.proxy.yaml` – Enables the Traefik proxy middleware.
 - `compose.redis.yaml` – Enables Redis which is an in-memory cache layer.
 
@@ -161,6 +164,7 @@ For more information on docker compose, check out their [Getting Started with Do
 ### Step 3: Setting up Frappe
 
 #### Step 3.0: Creating an environment file
+
 The first thing I like to do is create a file called `.env` (if it doesn't already exist) which will have information such as frappe version, database passwords, authentication keys for AWS, etc. As the guide focuses on a single server running ERP Next, lets add a `SITE_NAME` entry to the environment file.
 
 ```bash
@@ -207,7 +211,7 @@ if [ ! -f .env ]; then
   printf "No .env file found!"
   exit
 else
-  export $(grep -v '^#' .env | xargs)  
+  export $(grep -v '^#' .env | xargs)
 fi
 
 # Make sure we have all environment variables
@@ -215,7 +219,7 @@ if [ -z $SITE_NAME ]; then printf "SITE_NAME is empty."; exit; fi
 
 docker compose \
 --project-name $SITE_NAME \
--f compose.yaml \                  
+-f compose.yaml \
 -f plugins/compose.erpnext.yaml \
 -f plugins/compose.mariadb.yaml \
 -f plugins/compose.redis.yaml \
@@ -239,7 +243,7 @@ if [ ! -f .env ]; then
   printf "No .env file found!"
   exit
 else
-  export $(grep -v '^#' .env | xargs)  
+  export $(grep -v '^#' .env | xargs)
 fi
 
 # Make sure we have all environment variables
@@ -274,13 +278,14 @@ This command creates a frappe site and will take a minute or two to process. Aft
 bench --site <THE_SITE_NAME_IN_YOUR_ENV_FILE> install-app erpnext
 ```
 
-Wait for a minute or two. The `install-app` command just copies the relevant files over to our frappe site. To finish installation, we need to run a migration so entries in our database are created for the doc types added by frappe and erpnext. Finally, we run and wait: 
+Wait for a minute or two. The `install-app` command just copies the relevant files over to our frappe site. To finish installation, we need to run a migration so entries in our database are created for the doc types added by frappe and erpnext. Finally, we run and wait:
 
 ```bash
 bench --site <THE_SITE_NAME_IN_YOUR_ENV_FILE> migrate
 ```
 
 ### Step 5: Running and Beyond
+
 If you now navigate to localhost, you should see your ERP Next site up and running. Your browser may warn you about an incorrect SSL certificate, just ignore it for now. Once you this setup running on a publicly accessible server, your containerized installation will auto-negotiate and get a proper SSL certificate.
 
 I'll post a follow up on how to get your containerized installation running on Google Cloud Platform in the future. It's mostly straight-forward with some small caveats on what image to use, how to install docker, where to enable HTTPS traffic, etc.
