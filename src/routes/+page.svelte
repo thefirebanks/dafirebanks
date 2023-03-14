@@ -27,9 +27,9 @@
 	<p class="absolute left-4 top-[-20px] rounded-sm bg-primary-800 px-2 py-1 text-white">
 		working on..
 	</p>
-	currently im working in the{' '}<b>computer vision</b> team at{' '}
-	<b>unity</b>, building tools and infrastructure to run synthetic data simulations (that utilize
-	sidefx houdini and adobe substance) at scale.
+	currently im working on the{' '}<b>glTF</b> team at{' '}
+	<b>unity</b>, building tools and working with the
+	<a href="https://github.com/KhronosGroup/glTF">glTF</a> file format that powers digital twins at scale.
 </div>
 <Socials />
 <h3 class="w-full py-4 mt-8 text-xl text-center">
@@ -37,12 +37,13 @@
 </h3>
 <Slider items={SiteData.portfolio} bind:currentItem={portfolioItem}>
 	{#if portfolioItem}
-		<div class="flex flex-col">
+		<div class="flex flex-col w-full">
 			<a
 				class="text-xl no-underline font-bold hover:text-primary-700 text-center w-full"
-				href={`https://${portfolioItem.website}`}>{portfolioItem.website}</a
+				href={`https://${portfolioItem.website}`}
+				>{portfolioItem.displayName || portfolioItem.website}</a
 			>
-			<img class="shadow" alt="" src={portfolioItem.image} />
+			<img class="shadow w-full aspect-video" alt="" src={portfolioItem.image} />
 			{#if portfolioItem.description}
 				<p class="mt-3">{portfolioItem.description}</p>
 			{/if}
