@@ -3,9 +3,10 @@
 	import Meta from '../../components/Meta.svelte';
 	import PostList from '../../components/PostList.svelte';
 	import { alphabetize } from '../../utils';
+	import type { PageData } from './$types';
 
 	/** @type {import('./$types').PageData} */
-	export let data;
+	export let data: PageData;
 
 	$: filterBySeries = $page.url.searchParams.has('series');
 	$: suffix = filterBySeries ? $page.url.searchParams.get('series') : 'all';

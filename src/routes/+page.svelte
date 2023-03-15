@@ -14,12 +14,8 @@
 <TwitterCardMeta url={"/"} /> -->
 <div class="flex flex-col items-center">
 	<div class="sm:flex-row flex flex-col items-center py-4 space-x-8">
-		<img
-			alt="face of aryan mann"
-			class="max-h-24 rounded-full shadow-xl"
-			src="https://avatars.githubusercontent.com/u/18741614"
-		/>
-		<h1 class="text-4xl">hi! i'm aryan mann.</h1>
+		<img alt="face of aryan mann" class="max-h-32 rounded-full shadow-xl" src="/images/me1.jpg" />
+		<h1 class="text-4xl">hey! i'm aryan.</h1>
 	</div>
 	<h3 class="py-2 text-xl text-center">this website has stuff about me and the work ive done.</h3>
 </div>
@@ -39,7 +35,7 @@
 	{#if portfolioItem}
 		<div class="flex flex-col w-full">
 			<a
-				class="text-xl no-underline font-bold hover:text-primary-700 text-center w-full"
+				class="text-xl no-underline font-bold hover:text-primary-700 text-center w-full animate-pulse"
 				href={`https://${portfolioItem.website}`}
 				>{portfolioItem.displayName || portfolioItem.website}</a
 			>
