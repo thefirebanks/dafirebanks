@@ -1,12 +1,21 @@
 ---
-title: Managing a Containerized ERPNext Instance
+title: Containerizing ERPNext with Docker Compose
 date: 2022-07-11
+lastUpdated: 2023-03-10
 tags:
   - erpnext
+  - compose
   - ERP
   - docker
   - cloud
+part: 1
+series: containerized-erpnext
 ---
+
+<div class="text-red-800 bg-slate-100 p-3">
+	<b>Note:</b> This guide may be a little outdated since the Frappe Docker repository changes quite
+	often and workflows from that might have deviated since then.
+</div>
 
 ## Some History
 
@@ -288,4 +297,4 @@ bench --site <THE_SITE_NAME_IN_YOUR_ENV_FILE> migrate
 
 If you now navigate to localhost, you should see your ERP Next site up and running. Your browser may warn you about an incorrect SSL certificate, just ignore it for now. Once you this setup running on a publicly accessible server, your containerized installation will auto-negotiate and get a proper SSL certificate.
 
-I'll post a follow up on how to get your containerized installation running on Google Cloud Platform in the future. It's mostly straight-forward with some small caveats on what image to use, how to install docker, where to enable HTTPS traffic, etc.
+I'll post a follow up on how to get your containerized installation running on Google Cloud Platform in the future. It's mostly straight-forward (not really) but with some small caveats on what image to use, how to install docker, where to enable HTTPS traffic, etc.

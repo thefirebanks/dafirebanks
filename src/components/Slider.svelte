@@ -21,7 +21,7 @@
 		<div on:click={previousSlide}>
 			<slot name="prev">
 				<div
-					class="max-w-[10em] active:text-primary-500 transform-gpu duration-150 cursor-pointer text-secondary-700 hover:text-secondary-400"
+					class="max-w-[4em] active:text-primary-500 transform-gpu duration-150 cursor-pointer text-secondary-700 hover:text-secondary-400"
 				>
 					<ArrowLeft />
 				</div>
@@ -31,7 +31,7 @@
 		<div on:click={nextSlide}>
 			<slot name="next">
 				<div
-					class="max-w-[10em] active:text-primary-500 transform-gpu duration-150 cursor-pointer text-secondary-700 hover:text-secondary-400"
+					class="max-w-[4em] active:text-primary-500 transform-gpu duration-150 cursor-pointer text-secondary-700 hover:text-secondary-400"
 				>
 					<ArrowRight />
 				</div>
