@@ -1,6 +1,6 @@
 # [aryanmann.com](https://aryanmann.com)
 
-![Aryan Mann](./static/images/sc_aryanmann.png)
+![Aryan Mann](./src/assets/images/sc_aryanmann.png)
 
 > ### A resource for me to put stuff in.
 
