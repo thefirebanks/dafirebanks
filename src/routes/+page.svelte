@@ -4,7 +4,8 @@
 	import Slider from '../components/Slider.svelte';
 	import { SiteData } from '../site';
 	import Tagline from '@components/Tagline.svelte';
-
+	import MeImage from "@assets/images/me1.jpg";
+	
 	let portfolioItem = SiteData.portfolio[0];
 </script>
 
@@ -12,7 +13,7 @@
 <!-- Hero -->
 <div class="flex flex-col items-center">
 	<div class="sm:flex-row flex flex-col items-center py-4 space-x-8">
-		<img alt="face of aryan mann" class="max-h-32 rounded-full shadow-xl" src="/images/me1.jpg" />
+		<img alt="face of aryan mann" class="max-h-32 rounded-full shadow-xl" src={MeImage} />
 		<h1 class="text-4xl">hey! i'm aryan.</h1>
 	</div>
 	<h3 class="py-2 text-xl text-center">this website has stuff about me and the work ive done.</h3>
@@ -35,7 +36,7 @@
 			<a
 				class="text-xl no-underline font-bold hover:text-primary-700 text-center w-full animate-pulse"
 				href={`https://${portfolioItem.website}`}
-				target="_blank"
+				target="_blank" rel="noreferrer"
 				>{portfolioItem.displayName || portfolioItem.website}</a
 			>
 			<img class="shadow w-full aspect-video" alt="" src={portfolioItem.image} />

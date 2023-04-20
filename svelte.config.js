@@ -18,7 +18,8 @@ const config = {
 			'@types': path.resolve('./src/types/global.ts'),
 			'@src': path.resolve('./src'),
 			'@routes': path.resolve('./src/routes'),
-			'@utils': path.resolve('./src/utils.ts')
+			'@utils': path.resolve('./src/utils.ts'),
+			'@assets': path.resolve('./src/assets')
 		}
 	},
 	preprocess: [

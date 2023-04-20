@@ -1,11 +1,13 @@
 <script>
 	import { SiteData } from '../site.ts';
+	import LogoBlack from "@assets/images/am_logo_black.png"
+
 </script>
 
 <div class="flex flex-col items-center justify-center pb-12">
 	<img
 		alt="logo with the words Aryan Mann"
-		src="/images/am_logo_black.png"
+		src={LogoBlack}
 		width={170}
 		height={72}
 	/>
