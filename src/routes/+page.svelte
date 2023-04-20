@@ -3,15 +3,13 @@
 	import Meta from '../components/Meta.svelte';
 	import Slider from '../components/Slider.svelte';
 	import { SiteData } from '../site';
+	import Tagline from '@components/Tagline.svelte';
 
 	let portfolioItem = SiteData.portfolio[0];
 </script>
 
 <Meta title="Homepage" description="this website has stuff about me and the work ive done." />
-
-<!-- <BasicMeta url={"/"} />
-<OpenGraphMeta url={"/"} />
-<TwitterCardMeta url={"/"} /> -->
+<!-- Hero -->
 <div class="flex flex-col items-center">
 	<div class="sm:flex-row flex flex-col items-center py-4 space-x-8">
 		<img alt="face of aryan mann" class="max-h-32 rounded-full shadow-xl" src="/images/me1.jpg" />
@@ -19,24 +17,25 @@
 	</div>
 	<h3 class="py-2 text-xl text-center">this website has stuff about me and the work ive done.</h3>
 </div>
-<div class="bg-secondary-50 relative px-4 pt-6 pb-4 mt-10 mb-2 text-xl">
-	<p class="absolute left-4 top-[-20px] rounded-sm bg-primary-800 px-2 py-1 text-white">
-		working on..
-	</p>
+<Tagline title="working on...">
 	currently im working on the{' '}<b>glTF</b> team at{' '}
 	<b>unity</b>, building tools and working with the
 	<a href="https://github.com/KhronosGroup/glTF">glTF</a> file format that powers digital twins at scale.
-</div>
+</Tagline>
+<!-- Socials -->
 <Socials />
+<!-- Begin Work Portfolio -->
 <h3 class="w-full py-4 mt-8 text-xl text-center">
-	<a href="/portfolio">work portfolio</a>
+	<p>work portfolio</p>
 </h3>
+<!-- Work Portfolio Slider -->
 <Slider items={SiteData.portfolio} bind:currentItem={portfolioItem}>
 	{#if portfolioItem}
 		<div class="flex flex-col w-full">
 			<a
 				class="text-xl no-underline font-bold hover:text-primary-700 text-center w-full animate-pulse"
 				href={`https://${portfolioItem.website}`}
+				target="_blank"
 				>{portfolioItem.displayName || portfolioItem.website}</a
 			>
 			<img class="shadow w-full aspect-video" alt="" src={portfolioItem.image} />
@@ -46,6 +45,7 @@
 		</div>
 	{/if}
 </Slider>
+<!-- Work Summary -->
 <h3 class="w-full py-4 mt-8 text-xl text-center">
 	quick summary (<a href="https://github.com/aryan-mann">longer one here</a>)
 </h3>
@@ -90,6 +90,7 @@
 		</li>
 	</ul>
 </div>
+<!-- Fake Todo List -->
 <h3 class="py-4 mt-8 text-xl">todo list</h3>
 <ul class="inline-flex flex-col ml-8 list-disc">
 	<li style="text-decoration: line-through;">add a post about something</li>

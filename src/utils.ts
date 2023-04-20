@@ -73,7 +73,7 @@ export async function getFilteredPosts({
 	const mdxModules = import.meta.glob('./routes/posts/**/*.mdx');
 
 	const searchParams: URLSearchParams = params.url.searchParams;
-	const routeId: string = params.route.id;
+	const routeId: string = `/posts`;
 
 	let posts: Array<PostItem> = [];
 	const filterer = (post) => {
@@ -108,7 +108,6 @@ export async function getFilteredPosts({
 			.replace(/\+page$/, '')}`;
 		const resolvedModule: any = await postData();
 		const postMeta = resolvedModule.metadata;
-
 		const post = {
 			url: urlPath,
 			...postMeta,

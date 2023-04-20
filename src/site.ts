@@ -19,10 +19,16 @@ export const SiteData = {
 	menuLinks: [
 		{ label: 'home', url: '/' },
 		{ label: 'blog', url: '/posts' },
-		{ label: 'résumé (pdf)', url: '/AryanMann_Resume_Engineer.pdf' },
-		{ label: 'résumé (docx)', url: '/AryanMann_Resume_Engineer.docx' }
+		{ label: 'résumé (pdf)', url: '/resumes/AryanMann_Resume_Apr18.pdf' },
+		{ label: 'résumé (docx)', url: '/resumes/AryanMann_Resume_Apr18.docx' }
 	],
 	portfolio: [
+		{
+			website: 'ourspac.es',
+			image: '/images/sc_spaces.png',
+			description:
+				'A resource for spaces available to the public around San Francisco. These spaces are vetted and selected to be as free as possible, as nice as possible, and open to the public. We have parks, POPOs, libraries, and more coming as we discover them!'
+		},
 		{
 			website: 'amchemproducts.com',
 			image: '/images/sc_amc.jpg',
@@ -53,12 +59,6 @@ export const SiteData = {
 			image: '/images/sc_ari.jpg',
 			description:
 				'My own personal website with a tiny blog. Powered by Svelte under the hood with all custom components made using Tailwind. The blog uses MDX for the posts which also allows embedding of Svelte code (among other things such as Markdown).'
-		},
-		{
-			website: 'popos.aryanmann.com',
-			image: '/images/sc_pop.jpg',
-			description:
-				'A tiny side project to find, rate, and showcase POPOS (Privately Owned Public Open Spaces) in San Francisco. Also uses Svelte and GeoLocation to find you the best POPO near you. One click and you are own your way to a working space.'
 		}
 	]
 };
