@@ -1,5 +1,6 @@
 <script>
-	import Meta from '@components/Meta.svelte';
+	import Disqus from '@components/Disqus.svelte';
+import Meta from '@components/Meta.svelte';
 	import { alphabetize, convertToDate } from '@utils';
 
 	export let title;
@@ -8,6 +9,7 @@
 	export let lastUpdated;
 	export let series;
 	export let part;
+
 </script>
 
 <Meta {title} {date} />
@@ -47,6 +49,7 @@
 <div class="typo flex flex-col">
 	<slot />
 </div>
+<Disqus />
 <div class="mt-8 text-center text-gray-600">
 	For any criticism, kudos, or thoughts, shoot me a messsage at <a
 		href="mailto:aryan.21.mann@gmail.com">aryan.21.mann@gmail.com</a
