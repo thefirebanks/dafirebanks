@@ -14,7 +14,7 @@ import Meta from '@components/Meta.svelte';
 
 <Meta {title} {date} />
 
-<div class="flex flex-col mt-8">
+<div class="flex flex-col mt-2 md:mt-8">
 	<div class="flex flex-col items-start">
 		<h1 class="text-3xl md:text-4xl">{title}</h1>
 	</div>
@@ -26,7 +26,7 @@ import Meta from '@components/Meta.svelte';
 				<a href={`/posts?series=${series}`}>'{alphabetize(series)}'</a>
 			</p>
 		{/if}
-		<p class="whitespace-nowrap">
+		<p class="mb-2">
 			Posted on {'   '}<span class="underline">{convertToDate(date)}</span>
 			{#if lastUpdated}
 				but last updated on <span class="underline">{convertToDate(lastUpdated)}</span>
@@ -55,7 +55,7 @@ import Meta from '@components/Meta.svelte';
 		href="mailto:aryan.21.mann@gmail.com">aryan.21.mann@gmail.com</a
 	>
 </div>
-<div class="flex justify-center mt-8 space-x-4 text-gray-600">
+<div class="flex justify-center mt-8 space-x-4 text-gray-600 mb-4">
 	<a class="thick-link" href="/">home</a>
 	<a class="thick-link" href="/posts">all posts</a>
 </div>
