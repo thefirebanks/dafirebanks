@@ -5,8 +5,10 @@
 	import { SiteData } from '../site';
 	import Tagline from '@components/Tagline.svelte';
 	import MeImage from "@assets/images/me1.jpg";
+	import type { PageData } from './$types';
 	
 	let portfolioItem = SiteData.portfolio[0];
+	export let data: PageData;
 </script>
 
 <Meta title="Homepage" description="this website has stuff about me and the work ive done." />
@@ -18,7 +20,7 @@
 	</div>
 	<h3 class="py-2 text-xl text-center">this website has stuff about me and the work ive done.</h3>
 </div>
-<Tagline title="working on...">
+<Tagline title="working on..." hasDog={true}>
 	currently im working on the{' '}<b>glTF</b> team at{' '}
 	<b>unity</b>, building tools and working with the
 	<a href="https://github.com/KhronosGroup/glTF">glTF</a> file format that powers digital twins at scale.
@@ -39,7 +41,9 @@
 				target="_blank" rel="noreferrer"
 				>{portfolioItem.displayName || portfolioItem.website}</a
 			>
-			<img class="shadow w-full aspect-video" alt="" src={portfolioItem.image} />
+			<a href={`https://${portfolioItem.website}`}>
+				<img class="shadow w-full aspect-video cursor-pointer transform-gpu hover:-rotate-1 hover:shadow-md duration-200" alt="" src={portfolioItem.image} />
+			</a>
 			{#if portfolioItem.description}
 				<p class="mt-3">{portfolioItem.description}</p>
 			{/if}
@@ -91,8 +95,20 @@
 		</li>
 	</ul>
 </div>
+
+{#if data.latestPost}
+<!-- Latest Blog Post -->
+<h3 class="py-4 mt-8 text-xl">hot off the press</h3>
+<div class="flex items-center gap-4 flex-wrap px-8 text-xl">
+	<p>
+		<span class="mr-2">📝✍🏽</span><a class="text-xl" href={data.latestPost.url}>{data.latestPost.title}</a>
+	</p>
+	<p class="text-lg">on {data.latestPost.date.toDateString()}</p>
+</div>
+{/if}
+
 <!-- Fake Todo List -->
-<h3 class="py-4 mt-8 text-xl">todo list</h3>
+<h3 class="py-4 mt-4 text-xl">todo list</h3>
 <ul class="inline-flex flex-col ml-8 list-disc">
 	<li style="text-decoration: line-through;">add a post about something</li>
 	<li>add more detailed project breakdowns</li>

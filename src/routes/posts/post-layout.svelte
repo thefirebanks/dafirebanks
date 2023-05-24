@@ -1,6 +1,6 @@
 <script>
 	import Disqus from '@components/Disqus.svelte';
-import Meta from '@components/Meta.svelte';
+	import Meta from '@components/Meta.svelte';
 	import { alphabetize, convertToDate } from '@utils';
 
 	export let title;
@@ -9,7 +9,6 @@ import Meta from '@components/Meta.svelte';
 	export let lastUpdated;
 	export let series;
 	export let part;
-
 </script>
 
 <Meta {title} {date} />
