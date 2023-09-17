@@ -15,15 +15,14 @@
 <!-- Hero -->
 <div class="flex flex-col items-center">
 	<div class="sm:flex-row flex flex-col items-center py-4 space-x-8">
-		<img alt="face of aryan mann" class="max-h-32 rounded-full shadow-xl" src={MeImage} />
+		<img alt="face of aryan mann" class="max-h-32 rounded-full shadow-xl animate-cool" src={MeImage} />
 		<h1 class="text-4xl">hey! i'm aryan.</h1>
 	</div>
 	<h3 class="py-2 text-xl text-center">this website has stuff about me and the work ive done.</h3>
 </div>
 <Tagline title="working on..." hasDog={true}>
-	currently im working on the{' '}<b>glTF</b> team at{' '}
-	<b>unity</b>, building tools and working with the
-	<a href="https://github.com/KhronosGroup/glTF">glTF</a> file format that powers digital twins at scale.
+	currently im a part of the{' '}<a href='https://cohere.com/coral'>coral</a> team at{' '}<img class='inline h-4 w-4' alt='cohere logo' src='https://cohere.com/favicon.ico' />
+	<b>cohere</b>, working on figuring how to use large language models to build the next generation of user interfaces. i swear it's better ux than this.
 </Tagline>
 <!-- Socials -->
 <Socials />
@@ -57,7 +56,10 @@
 <div class="flex justify-center">
 	<ul class="max-w-screen-sm list-disc">
 		<li>
-			<b> july 2021 to present </b>{' '}
+			<b>july 2023 to present</b>{' '}– trying to make large language models useful to enterprises
+		</li>
+		<li>
+			<b>july 2021 to june 2023</b>{' '}
 			– working on enabling low-touch high-performance synthetic worlds that generate data for computer
 			vision models.. i.e.{' '}
 			<a href="https://github.com/Unity-Technologies/com.unity.perception">
@@ -74,21 +76,11 @@
 			information about alumni outcomes accessible to current students via an interactive React app
 		</li>
 		<li>
-			<div class="flex flex-col">
-				<b>april 2016 to june 2018</b> – worked on creating three beautiful websites via cutting
-				edge web technologies such as React, NextJs, and SSG
-				<ul class="inline-flex flex-col ml-8">
-					<li>
-						- <a href="https://amchemproducts.com">amchemproducts.com</a>
-					</li>
-					<li>
-						- <a href="https://drythane.com">drythane.com</a>
-					</li>
-					<li>
-						- <a href="https://amshield.com">amshield.com</a>
-					</li>
-				</ul>
-			</div>
+			<b>april 2016 to june 2018</b> – worked on creating three beautiful websites via cutting
+			edge web technologies such as React, NextJs, and SSG. 
+				(1) <a class='inline' href="https://amchemproducts.com">amchemproducts.com</a>
+				(2) <a class='inline' href="https://drythane.com">drythane.com</a>
+				(3) <a class='inline' href="https://amshield.com">amshield.com</a>
 		</li>
 		<li>
 			<b>1990s to april 2016</b> – ¯\_(ツ)_/¯
@@ -96,14 +88,16 @@
 	</ul>
 </div>
 
-{#if data.latestPost}
+{#if data.recentPosts}
 <!-- Latest Blog Post -->
 <h3 class="py-4 mt-8 text-xl">hot off the press</h3>
-<div class="flex items-center gap-4 flex-wrap px-8 text-xl">
-	<p>
-		<span class="mr-2">📝✍🏽</span><a class="text-xl" href={data.latestPost.url}>{data.latestPost.title}</a>
-	</p>
-	<p class="text-lg">on {data.latestPost.date.toDateString()}</p>
+<div class="flex flex-col gap-4 flex-wrap px-8 text-xl">
+	{#each data.recentPosts as recentPost}
+	<div class='flex gap-4 items-center'>
+			<span class="mr-2">📝✍🏽</span><a class="text-xl" href={recentPost.url}>{recentPost.title}</a>
+			<p class='text-md'>on {recentPost.date.toDateString()}</p>
+	</div>
+	{/each}
 </div>
 {/if}
 
@@ -115,3 +109,26 @@
 	<li>add analytics to track your every movement muahaha</li>
 	<li>remove remaining capital letters</li>
 </ul>
+
+<style>
+	@keyframes spin {
+		from {
+			transform: rotate(0deg) scale(0.9);
+		}
+		25% {
+			transform: rotate(-10deg);
+		}
+		50% {
+			transform: rotate(0deg) scale(1.2);
+		}
+		75% {
+			transform: rotate(10deg);
+		}
+		to {
+			transform: rotate(0deg) scale(0.9);
+		}
+	}
+	.animate-cool {
+		animation: spin 8s cubic-bezier(0.755, 0.05, 0.855, 0.06) infinite;
+	}
+</style>
