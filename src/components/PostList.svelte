@@ -24,7 +24,7 @@
 		</div>
 		<div class="max-w-24 max-h-28 flex mt-2 space-x-3">
 			{#each post.tags as tag}
-				<a class="text-sm" href={`/tags/${tag}`}>#{tag}</a>
+				<a class="text-sm no-underline hover:bg-secondary-50 px-1" href={`/tags/${tag}`}>#{tag}</a>
 			{/each}
 		</div>
 		{#if post.part && post.series}

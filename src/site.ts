@@ -22,12 +22,12 @@ export const SiteData = {
 		{ title: 'Github', url: 'https://github.com/aryan-mann', icon: FaGithub },
 		{ title: 'Spotify', url: 'https://open.spotify.com/user/aryan_mann', icon: FaSpotify },
 		{ title: 'Email', url: 'mailto:aryan.21.mann@gmail.com', icon: FaMailBulk }
-	],
+	] as const,
 	menuLinks: [
 		{ label: 'home', url: '/' },
 		{ label: 'blog', url: '/posts' },
-		{ label: 'résumé', url: '/resumes/AryanMann_Resume_Apr28.pdf' },
-	],
+		{ label: 'résumé (outdated)', url: '/resumes/AryanMann_Resume_Apr28.pdf', external: true },
+	] as const,
 	portfolio: [
 		{
 			website: 'ourspac.es',
@@ -66,5 +66,5 @@ export const SiteData = {
 			description:
 				'My own personal website with a tiny blog. Powered by Svelte under the hood with all custom components made using Tailwind. The blog uses MDX for the posts which also allows embedding of Svelte code (among other things such as Markdown).'
 		}
-	]
+	] as const
 };

@@ -22,13 +22,13 @@
 </div>
 <Tagline title="working on..." hasDog={true}>
 	currently im a part of the{' '}<a href='https://cohere.com/coral'>coral</a> team at{' '}<img class='inline h-4 w-4' alt='cohere logo' src='https://cohere.com/favicon.ico' />
-	<b>cohere</b>, working on figuring how to use large language models to build the next generation of user interfaces. i swear it's better ux than this.
+	<b>cohere</b>, working on figuring how to use large language models to build the next generation of user interfaces
 </Tagline>
 <!-- Socials -->
 <Socials />
 <!-- Begin Work Portfolio -->
 <h3 class="w-full py-4 mt-8 text-xl text-center">
-	<p>work portfolio</p>
+	<p>actual work & personal projects</p>
 </h3>
 <!-- Work Portfolio Slider -->
 <Slider items={SiteData.portfolio} bind:currentItem={portfolioItem}>
@@ -56,7 +56,7 @@
 <div class="flex justify-center">
 	<ul class="max-w-screen-sm list-disc">
 		<li>
-			<b>july 2023 to present</b>{' '}– trying to make large language models useful to enterprises
+			<b>july 2023 to present</b>{' '}– trying to make large language models useful to enterprises (ps: try talking to <a href="https://coral.cohere.com/">coral</a>)
 		</li>
 		<li>
 			<b>july 2021 to june 2023</b>{' '}
@@ -94,8 +94,8 @@
 <div class="flex flex-col gap-4 flex-wrap px-8 text-xl">
 	{#each data.recentPosts as recentPost}
 	<div class='flex gap-4 items-center'>
-			<span class="mr-2">📝✍🏽</span><a class="text-xl" href={recentPost.url}>{recentPost.title}</a>
-			<p class='text-md'>on {recentPost.date.toDateString()}</p>
+			<span class="mr-2">📝✍🏽</span><a class="text-xl no-underline hover:bg-slate-50 px-2" href={recentPost.url}>{recentPost.title}</a>
+			<p class='text-sm'>on {recentPost.date.toLocaleDateString('en-us', { year: 'numeric', month: 'long', day: 'numeric'})}</p>
 	</div>
 	{/each}
 </div>
