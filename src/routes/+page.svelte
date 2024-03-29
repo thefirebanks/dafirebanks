@@ -104,4 +104,11 @@
 	.animate-cool {
 		animation: spin 8s cubic-bezier(0.755, 0.05, 0.855, 0.06) infinite;
 	}
+
 </style>
+
+<!-- Add some space between the previous elements and the footer -->
+<div class="py-8"></div>
+<footer class="text-center py-4 text-gray-500"> 
+	<p class="text-sm">Website built with <a href="https://svelte.dev" target="_blank" rel="noreferrer">svelte</a> by the unmistakable <a href="https://aryanmann.com/" target="_blank" rel="noreferrer">Aryan Mann</a>.</p>
+</footer>
