@@ -4,5 +4,6 @@
             "language": "mdx",
             "scheme": "file"
         }
-    ]
+    ],
+    "github.copilot.editor.enableAutoCompletions": true
 }
