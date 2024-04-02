@@ -4,7 +4,7 @@
 	import Slider from '../components/Slider.svelte';
 	import { SiteData } from '../site';
 	import Tagline from '@components/Tagline.svelte';
-	import MeImage from "@assets/images/me1.jpg";
+	// import MeImage from "@assets/images/me1.jpg";
 	import type { PageData } from './$types';
 	
 	let portfolioItem = SiteData.portfolio[0];
@@ -15,10 +15,10 @@
 <!-- Hero -->
 <div class="flex flex-col items-center">
 	<div class="sm:flex-row flex flex-col items-center py-4 space-x-8">
-		<!-- <img alt="face of aryan mann" class="max-h-32 rounded-full shadow-xl animate-cool" src={MeImage} /> -->
+		<!-- <img alt="photo of daniel firebanks" class="max-h-32 rounded-full shadow-xl animate-cool" src={MeImage} /> -->
 		<h1 class="text-4xl">hey there!</h1>
 	</div>
-	<h3 class="py-2 text-xl text-center">this website has stuff</h3>
+	<h3 class="py-2 text-xl text-center"> I'm Daniel. This website is in construction but it will have stuff soon :)</h3>
 </div>
 <Tagline title="most recent..." hasDog={true}>
 	this is a description
@@ -55,10 +55,22 @@
 <div class="flex justify-center">
 	<ul class="max-w-screen-sm list-disc">
 		<li>
-			<b>july 2023 to present</b> – chill
+			<b> Then, to present</b> – relentlessly pursuing a 🟩 in the 🇺🇸
+		</li>
+		<!-- <li>
+			<b>September 2020 to July 2023 </b> NEW YORK 🇺🇸
+		</li> -->
+		<!-- <li>
+			<b>January 2019 to May 2019</b> – Interlude: 🇭🇺
+		</li> -->
+		<!-- <li>
+			<b>August 2016 to May 2020</b> – Went 180 to the flatlands of Oberlin, Ohio. 🇺🇸
 		</li>
 		<li>
-			<b>1990s to april 2016</b> – ¯\_(ツ)_/¯
+			<b>August 2014 to May 2016</b> – Lived by a <a href=https://www.unitedworldwide.co/uploads/1/3/0/8/130843894/uwcusa-campus-view-2-e1552924297223_orig.jpg>castle</a> in the mountains of New Mexico 🇺🇸
+		</li> -->
+		<li>
+			<b>1990s to August 2014</b> – ¯\_(ツ)_/¯ in 🇵🇪
 		</li>
 	</ul>
 </div>
