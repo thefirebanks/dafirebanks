@@ -6,7 +6,7 @@ import FaLinkedin from 'svelte-icons/fa/FaLinkedin.svelte'
 import PfOurSpaces from "@assets/images/sc_spaces.png"
 
 export const SiteData = {
-	base_url: 'https://aryanmann.com',
+	base_url: 'https://dafirebanks.vercel.app/',
 	site_title: "Daniel's website",
 	author: 'Daniel Firebanks-Quevedo',
 	title_functor: (title) => `${title} | Daniel Firebanks-Quevedo`,
@@ -23,6 +23,7 @@ export const SiteData = {
 	menuLinks: [
 		{ label: 'home', url: '/' },
 		{ label: 'blog', url: '/posts' },
+		{ label: 'places', url: '/places'}
 		// { label: 'photography', url: '/photography'},
 		// { label: 'music', url: '/music' },
 		// { label: 'résumé (outdated)', url: '/resumes/AryanMann_Resume_Apr28.pdf', external: true },
