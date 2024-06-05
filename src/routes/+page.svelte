@@ -92,7 +92,6 @@
 <h3 class="py-4 mt-4 text-xl">TODO</h3>
 <ul class="inline-flex flex-col ml-8 list-disc">
 	<li>add coffee shop recs in San Francisco</li>
-	<li>April post</li>
 	<li>May post</li>
 </ul>
 
