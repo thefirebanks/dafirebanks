@@ -1,13 +1,13 @@
 <script lang="ts">
-	import Socials from '../components/Socials.svelte';
+	// import Socials from '../components/Socials.svelte';
 	import Meta from '../components/Meta.svelte';
-	import Slider from '../components/Slider.svelte';
+	// import Slider from '../components/Slider.svelte';
 	import { SiteData } from '../site';
 	import Tagline from '@components/Tagline.svelte';
 	// import MeImage from "@assets/images/me1.jpg";
 	import type { PageData } from './$types';
 	
-	let portfolioItem = SiteData.portfolio[0];
+	// let portfolioItem = SiteData.portfolio[0];
 	export let data: PageData;
 </script>
 
@@ -15,22 +15,22 @@
 <!-- Hero -->
 <div class="flex flex-col items-center">
 	<div class="sm:flex-row flex flex-col items-center py-4 space-x-8">
-		<!-- <img alt="photo of daniel firebanks" class="max-h-32 rounded-full shadow-xl animate-cool" src={MeImage} /> -->
+		<!-- <img alt="photo of daniel" class="max-h-32 rounded-full shadow-xl animate-cool" src={MeImage} /> -->
 		<h1 class="text-4xl">hey there!</h1>
 	</div>
-	<h3 class="py-2 text-xl text-center"> I'm Daniel. This website is in construction but it will have stuff soon :)</h3>
+	<!-- <h3 class="py-2 text-xl text-center"> I'm Daniel. This website is in constant construction - a place to practice sharing what comes to my mind :)</h3> -->
 </div>
-<Tagline title="most recent..." hasDog={true}>
-	this is a description
+<Tagline title="I'm Daniel 👋" hasDog={true}>
+	This website is in constant construction - a place to practice sharing what comes to mind :)
 </Tagline>
 <!-- Socials -->
-<Socials />
+<!-- <Socials /> -->
 <!-- Begin Work Portfolio -->
-<h3 class="w-full py-4 mt-8 text-xl text-center">
+<!-- <h3 class="w-full py-4 mt-8 text-xl text-center">
 	<p>actual work & personal projects</p>
-</h3>
+</h3> -->
 <!-- Work Portfolio Slider -->
-<Slider items={SiteData.portfolio} bind:currentItem={portfolioItem}>
+<!-- <Slider items={SiteData.portfolio} bind:currentItem={portfolioItem}>
 	{#if portfolioItem}
 		<div class="flex flex-col w-full">
 			<a
@@ -47,16 +47,16 @@
 			{/if}
 		</div>
 	{/if}
-</Slider>
+</Slider> -->
 <!-- Work Summary -->
-<h3 class="w-full py-4 mt-8 text-xl text-center">
+<!-- <h3 class="w-full py-4 mt-8 text-xl text-center">
 	quick summary
 </h3>
 <div class="flex justify-center">
 	<ul class="max-w-screen-sm list-disc">
 		<li>
 			<b> Then, to present</b> – relentlessly pursuing a 🟩 in the 🇺🇸
-		</li>
+		</li> -->
 		<!-- <li>
 			<b>September 2020 to July 2023 </b> NEW YORK 🇺🇸
 		</li> -->
@@ -69,11 +69,11 @@
 		<li>
 			<b>August 2014 to May 2016</b> – Lived by a <a href=https://www.unitedworldwide.co/uploads/1/3/0/8/130843894/uwcusa-campus-view-2-e1552924297223_orig.jpg>castle</a> in the mountains of New Mexico 🇺🇸
 		</li> -->
-		<li>
+		<!-- <li>
 			<b>1990s to August 2014</b> – ¯\_(ツ)_/¯ in 🇵🇪
 		</li>
 	</ul>
-</div>
+</div> -->
 
 {#if data.recentPosts}
 <!-- Latest Blog Post -->
@@ -91,8 +91,9 @@
 <!-- Fake Todo List -->
 <h3 class="py-4 mt-4 text-xl">TODO</h3>
 <ul class="inline-flex flex-col ml-8 list-disc">
-	<li>add a post about something</li>
-	<li>add more detailed project breakdowns</li>
+	<li>add coffee shop recs in San Francisco</li>
+	<li>April post</li>
+	<li>May post</li>
 </ul>
 
 <style>
