@@ -23,6 +23,7 @@ export const SiteData = {
 	menuLinks: [
 		{ label: 'home', url: '/' },
 		{ label: 'blog', url: '/posts' },
+		{ label: 'places', url: '/places'}
 		// { label: 'photography', url: '/photography'},
 		// { label: 'music', url: '/music' },
 		// { label: 'résumé (outdated)', url: '/resumes/AryanMann_Resume_Apr28.pdf', external: true },
