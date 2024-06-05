@@ -49,11 +49,11 @@
 	<slot />
 </div>
 <Disqus />
-<div class="mt-8 text-center text-gray-600">
+<!-- <div class="mt-8 text-center text-gray-600">
 	For any criticism, kudos, or thoughts, shoot me a messsage at <a
 		href="mailto:dafirebanks@gmail.com">dafirebanks@gmail.com</a
 	>
-</div>
+</div> -->
 <div class="flex justify-center mt-8 space-x-4 text-gray-600 mb-4">
 	<a class="thick-link" href="/">home</a>
 	<a class="thick-link" href="/posts">all posts</a>

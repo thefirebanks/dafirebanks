@@ -6,10 +6,10 @@ import FaLinkedin from 'svelte-icons/fa/FaLinkedin.svelte'
 import PfOurSpaces from "@assets/images/sc_spaces.png"
 
 export const SiteData = {
-	base_url: 'https://aryanmann.com',
+	base_url: 'https://dafirebanks.vercel.app',
 	site_title: "Daniel's website",
-	author: 'Daniel Firebanks-Quevedo',
-	title_functor: (title) => `${title} | Daniel Firebanks-Quevedo`,
+	author: 'Daniel',
+	title_functor: (title) => `${title}`,
 	site_description:
 		'a blog containing posts about things like tech, philosophy, tech, and philosophy. maybe some book stuff too.',
 	site_keywords: ['Next.js', 'Netlify', 'React'],
